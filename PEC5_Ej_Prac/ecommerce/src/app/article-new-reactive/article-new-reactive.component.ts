@@ -9,7 +9,7 @@ import {
 import { Article } from '../models/article';
 
 // Names validator
-function nameArticleValidator(
+function NameArticleValidator(
   control: AbstractControl
 ): ValidationErrors | null {
   const forbiddenNames = ['prueba', 'test', 'mock', 'fake'];
@@ -39,7 +39,7 @@ export class ArticleNewReactiveComponent {
 
   createForm() {
     this.articleForm = this.fb.group({
-      name: ['', [Validators.required, nameArticleValidator]],
+      name: ['', [Validators.required, NameArticleValidator]],
       price: ['', [Validators.required, Validators.min(0.1)]],
       imageUrl: [
         '',
