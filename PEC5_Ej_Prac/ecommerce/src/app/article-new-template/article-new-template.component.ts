@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Article } from '../models/article';
 
 @Component({
   selector: 'app-article-new-template',
@@ -7,17 +8,14 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./article-new-template.component.css'],
 })
 export class ArticleNewTemplateComponent {
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      // Print article in console
-      const formData = form.value.article;
-      console.log('Datos del formulario recogidos correctamente:');
-      console.log('Nombre del artículo:', formData.name);
-      console.log('Precio:', formData.price + '€');
-      console.log('URL de imagen:', formData.imageUrl);
-      console.log('En oferta:', formData.isOnSale);
-    } else {
+  constructor() {}
+
+  onSubmit(articleForm) {
+    if(articleForm.invalid) {
       console.log('Hay campos sin rellenar');
+    } else {
+      const article: Article = articleForm.value.article;
+      console.log(article);
     }
   }
 }

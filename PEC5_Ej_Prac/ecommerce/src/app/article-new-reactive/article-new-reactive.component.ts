@@ -6,6 +6,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { Article } from '../models/article';
 
 // Names validator
 function nameArticleValidator(
@@ -51,14 +52,11 @@ export class ArticleNewReactiveComponent {
   onSubmit() {
     this.submitted = true;
 
-    if (this.articleForm.valid) {
-      console.log('Datos del formulario recogidos correctamente:');
-      console.log('Nombre del artículo:', this.articleForm.get('name')?.value);
-      console.log('Precio:', this.articleForm.get('price')?.value);
-      console.log('URL de la imagen:', this.articleForm.get('imageUrl')?.value);
-      console.log('En oferta:', this.articleForm.get('isOnSale')?.value);
-    } else {
+    if (this.articleForm.invalid) {
       console.log('Hay campos sin rellenar');
+    } else {
+      const article: Article = this.articleForm.value;
+      console.log(article);
     }
   }
 }
